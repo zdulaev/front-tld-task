@@ -1,0 +1,54 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding-left: @button__padding-y;
+    padding-right: @button__padding-y;
+    height: 35px;
+    justify-content: center;
+    max-width: max-content;
+    font-family: 'PF DinDisplay Pro';
+    text-decoration: none;
+    font-weight: @button__font-weight;
+    font-size: @button__font-size;
+    border: @button__border-line solid @color__transparent;
+    border-radius: @button__border-radius;
+    cursor: pointer;
+    vertical-align: middle;
+
+    &-href {
+        border: none;
+        background: transparent;
+        border-bottom: 1px dashed @href__decoration-color;
+        border-radius: unset;
+        font-weight: 400;
+        color: @color__black;
+        text-decoration: none;
+        display: inline-block;
+    }
+    &-danger {
+        .btn.type(@color__red, @color__red, @color__white);
+    }
+    &-success {
+        .btn.type();
+    }
+    &-light {
+        .btn.type(@button__color-light-gray, @color__white, @color__black);
+    }
+    &-primary {
+        .btn.type(@color__white, @color__blue, @color__white);
+    }
+    &-outline-light {
+        .btn.type(@color__white, @color__transparent, @color__white);
+
+        &:hover {
+            .btn.type(@color__black, @color__transparent, @color__black);
+        }
+    }
+
+    > img {
+        padding-right: 7px;
+    }
+    > i {
+        padding-right: 3px;
+    }
+}
