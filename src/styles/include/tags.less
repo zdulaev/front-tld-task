@@ -46,9 +46,19 @@
         img:first-child {
             padding-right: 8px;
         }
+        @media (min-width: @container-xl) {
+            border-radius: 5px;
+            height: 35px;
+            margin: 7.5px;
+        }
     }
     &::-webkit-scrollbar {
         width: 0;
         height: 0;
+    }
+    @media (min-width: @container-xl) {
+        justify-content: center;
+        align-items: center;
+        min-height: 65px;
     }
 }

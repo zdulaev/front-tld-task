@@ -31,21 +31,23 @@ a {
 
 .container {
     padding: 0 15px;
+    // padding: 0 5px;
     width: 100%;
     max-width: @container-md;
     margin-left: auto;
     margin-right: auto;
 
-    @media (min-width: @container-xl) {
-        &.page {
-            display: flex;
-        }
+    @media (min-width: @container-md) {
+        padding: 0 10px;
     }
     @media (min-width: @container-lg) {
         max-width: @container-lg;
     }
     @media (min-width: @container-xl) {
         max-width: @container-xl;
+        &.page {
+            display: flex;
+        }
     }
 }
 .site {
@@ -57,7 +59,7 @@ a {
     a, span {
         font-size: 14px;
         text-decoration: none;
-        margin-right: 15px;
+        margin-right: 10px;
     }
     .container {
         display: flex;
@@ -65,13 +67,21 @@ a {
         justify-content: space-between;
         min-height: 38px;
     }
-    .login {
-        
-    }
     .social {
+        // position: relative;
+        // left: 10px;
+
         a {
             margin-right: 0;
             font-size: 16px;
+        }
+        .fa {
+            &-telegram {
+                font-size: 13px;
+            }
+            &-instagram {
+                font-size: 15px;
+            }
         }
     }
 }
@@ -107,7 +117,7 @@ a {
             color: @color__black;
 
             @media (min-width: @container-sm) {
-                margin-right: 26px;
+                margin-right: 30px;
             }
         }
         &:not(.show) {
@@ -155,7 +165,6 @@ a {
         @media (min-width: @container-sm) {
             display: flex;
             align-items: center;
-            margin-left: auto;
             order: 10;
         }
     }
@@ -168,7 +177,7 @@ a {
         @media (min-width: @container-sm) {
             font-weight: 900;
             font-size: 32px;
-            padding-top: 40px;
+            padding-top: 35px;
             padding-bottom: 15px;
 
             span {
@@ -215,6 +224,7 @@ a {
             .container {
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 height: 100%;
                 flex-wrap: nowrap;
                 overflow: hidden;
@@ -233,6 +243,12 @@ main {
         }
         h1, h2, h3, h4, h5, h6 {
             color: @color__white;
+
+            @media (min-width: @container-md) {
+                font-size: 38px;
+                margin-bottom: 15px;
+                margin-top: 15px;
+            }
         }
         p {
             line-height: 26px;
@@ -261,6 +277,14 @@ main {
             font-size: 48px;
             background: linear-gradient(180deg, rgba(5, 7, 8, 0.319421) 0%, rgba(6, 8, 9, 0.24) 0.01%, #060809 70.31%, #000000 99.92%, #060809 99.93%, rgba(204, 204, 204, 0.686417) 99.94%, rgba(177, 177, 177, 0.729419) 99.95%, #060809 99.96%, rgba(0, 0, 0, 0.533801) 99.97%);
         }
+        @media (min-width: @container-md) {
+            padding: 10px 0;
+            max-height: none;
+
+            .view-all {
+                display: none !important;
+            }
+        }
     }
 }
 
@@ -272,10 +296,17 @@ main {
         margin-bottom: 20px;
         border: 1px solid @color__gray;
 
+        @media (min-width: @container-md) {
+            margin-top: 30px;
+        }
     }
     &__main {
         > * {
             padding: 15px 20px;
+
+            @media (min-width: @container-sm) {
+                padding: 15px;
+            }
         }
 
         @media (min-width: @container-sm) {
@@ -294,6 +325,7 @@ main {
 
         @media (min-width: @container-sm) {
             position: static;
+            padding-bottom: 10px;
         }
     }
     &__center {
@@ -314,6 +346,9 @@ main {
                 }
             }
         }
+        @media (min-width: @container-sm) {
+            padding-top: 10px;
+        }
     }
     &__buttons {
         .btn {
@@ -329,7 +364,7 @@ main {
         padding-top: 40px;
 
         @media (min-width: @container-sm) {
-            padding-top: 5px;
+            padding-top: 0;
         }
         .labels {
             position: absolute;
@@ -392,6 +427,8 @@ main {
 
             @media (min-width: @container-sm) {
                 text-align: left;
+                margin-top: 5px;
+                font-weight: 400;
             }
         }
     }
@@ -403,6 +440,7 @@ main {
         padding-bottom: 15px;
 
         @media (min-width: @container-sm) {
+            padding-top: 15px;
             .burger + .custom-html {
                 display: none;
             }
@@ -424,9 +462,6 @@ main {
             padding-bottom: 10px;
             line-height: 25px;
 
-            @media (min-width: @container-sm) {
-                flex-basis: calc(100% / 3);
-            }
             span {
                 font-size: 14px;
             }
@@ -434,6 +469,10 @@ main {
                 font-weight: 700;
                 font-size: 18px;
                 margin: 0;
+            }
+            @media (min-width: @container-sm) {
+                flex-basis: calc(100% / 3);
+                padding-bottom: 3px;
             }
         }
     }
@@ -492,6 +531,7 @@ main {
         }
     }
     &__content {
+        position: relative;
         width: 100%;
         padding-left: 15px;
 
@@ -507,6 +547,8 @@ main {
             color: #9A9D9F;
         }
         .btn {
+            position: absolute;
+            bottom: 0;
             min-width: fill-available;
             height: 30px;
         }
@@ -597,6 +639,11 @@ main {
 }
 @media (max-width: @container-md) {
     .md-none {
+        display: none!important;
+    }
+}
+@media (max-width: @container-lg) {
+    .lg-none {
         display: none!important;
     }
 }

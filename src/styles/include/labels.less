@@ -5,12 +5,15 @@
     font-size: @label__font-size;
 
     span {
-        background: #1E88E5;
+        background-color: @color__blue;
         color: #fff;
         padding: @label__padding;
         margin: @label__margin;
         border-radius: @label__border-radius;
 
+        @media (min-width: @container-sm) {
+            background-color: @color__green;
+        }
         &:last-child {
             margin-right: 0;
         }
