@@ -11,6 +11,7 @@ const size = require('gulp-size')
 const newer = require('gulp-newer')
 const browsersync = require('browser-sync').create()
 const del = require('del')
+const perfectPixel = require('gulp-perfect-pixel').default;
 
 // Пути исходных файлов src и пути к результирующим файлам dest
 const paths = {
@@ -34,17 +35,24 @@ const paths = {
     fonts: {
         src: 'src/fonts/**/*',
         dest: 'dist/fonts/'
+    },
+    perfectPixel: {
+        src: 'src/perfectPixel/*',
+        dest: 'dist/perfectPixel'
     }
 }
 
 // Очистить каталог dist, удалить все кроме изображений
 function clean() {
-    return del(['dist/*', '!dist/img', '!dist/fonts'])
+    return del(['dist/*', '!dist/img', '!dist/fonts', '!dist/perfectPixel'])
 }
 
 // Обработка html и pug
 function html() {
     return gulp.src(paths.html.src)
+    .pipe(perfectPixel({}, {
+        rootPathImage: paths.perfectPixel.dest,
+    }))
     .pipe(size({
         showFiles:true
     }))
@@ -116,6 +124,13 @@ function watch() {
     gulp.watch(paths.scripts.src, scripts)
     gulp.watch(paths.fonts.src, fonts)
     gulp.watch(paths.images.src, img)
+    gulp.watch(paths.perfectPixel.src, pixel)
+}
+
+// perfectPixel
+function pixel() {
+    return gulp.src(paths.perfectPixel.src)
+        .pipe(gulp.dest(paths.perfectPixel.dest))
 }
 
 // Таски для ручного запуска с помощью gulp clean, gulp html и т.д.
@@ -127,6 +142,7 @@ exports.scripts = scripts
 exports.img = img
 exports.fonts = fonts
 exports.watch = watch
+exports.pixel = pixel
 
 // Таск, который выполняется по команде gulp
-exports.default = gulp.series(clean, html, gulp.parallel(styles, scripts, img, fonts), watch)
+exports.default = gulp.series(clean, pixel, html, gulp.parallel(styles, scripts, img, fonts), watch)

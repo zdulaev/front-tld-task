@@ -24,6 +24,10 @@
         color: @color__black;
         text-decoration: none;
         display: inline-block;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: @button__padding-y;
+        margin-right: @button__padding-y;
     }
     &-danger {
         .btn.type(@color__red, @color__red, @color__white);
@@ -33,6 +37,10 @@
     }
     &-light {
         .btn.type(@button__color-light-gray, @color__white, @color__black);
+
+        &-revert {
+            .btn.type(@color__white, @color__transparent, @color__white);
+        }
     }
     &-primary {
         .btn.type(@color__white, @color__blue, @color__white);

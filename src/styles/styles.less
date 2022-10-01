@@ -33,8 +33,16 @@ a {
     margin-left: auto;
     margin-right: auto;
 
+    @media (min-width: @container-xl) {
+        &.page {
+            display: flex;
+        }
+    }
     @media (min-width: @container-lg) {
         max-width: @container-lg;
+    }
+    @media (min-width: @container-xl) {
+        max-width: @container-xl;
     }
 }
 .site {
@@ -126,7 +134,6 @@ a {
 
         .search {
             display: flex;
-            // padding-left: 25px;
 
             @media (min-width: @container-sm) {
                 padding-left: 8px;
@@ -218,7 +225,13 @@ main {
         overflow: hidden;
 
         * {
-            color: #fff;
+            color: #DFE4E6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: @color__white;
+        }
+        p {
+            line-height: 26px;
         }
         img.background {
             position: absolute;
@@ -247,69 +260,24 @@ main {
     }
 }
 
-.tags {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-    min-height: 45px;
-    background-color: @color__very-light-gray;
-    padding: 2px;
-
-    a, button, span {
-        position: relative;
-        font-family: 'PF DinDisplay Pro';
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 700;
-        padding: 13px 20px;
-        box-shadow: 0 0 0 1px @border__gray-color;
-        border: 0;
-        text-decoration: none;
-        color: @color__black;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 0;
-        background-color: @button__color-gray;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-
-        &.disable {
-            background-color: #ECEDED;
-            color: #C7C8C9;
-            cursor: default;
-        }
-        &.active:not(.disable), &:hover:not(.disable) {
-            background-color: #E0EAF3;
-            box-shadow: 0 0 0 1px @color__blue;
-            z-index: 1;
-        }
-        &.active:not(.disable) {
-            cursor: default;
-        }
-        &:hover:not(.disable) {
-            z-index: 2;
-        }
-        img:first-child {
-            padding-right: 8px;
-        }
-    }
-    &::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-    }
-}
-
 .primary {
+    width: fill-available;
+
     article {
         margin-top: 20px;
         margin-bottom: 20px;
         border: 1px solid @color__gray;
 
+    }
+    &__main {
         > * {
             padding: 15px 20px;
+        }
+
+        @media (min-width: @container-sm) {
+            position: relative;
+            width: 60%;
+            margin-left: auto;
         }
     }
 
@@ -319,9 +287,28 @@ main {
         border-bottom: 1px solid @color__gray;
         background-color: @color__light-gray;
         position: relative;
+
+        @media (min-width: @container-sm) {
+            position: static;
+        }
     }
     &__center {
         border-bottom: 1px solid @color__gray;
+
+        .primary__buttons {
+            display: flex;
+
+            .btn {
+                margin-right: 15px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+                &-primary {
+                    order: -1;
+                }
+            }
+        }
     }
     &__buttons {
         .btn {
@@ -331,23 +318,65 @@ main {
     }
     &__logo {
         display: flex;
-        align-items: flex-end;
-        padding-top: 10px;
+        align-items: center;
+        padding-top: 40px;
 
+        @media (min-width: @container-sm) {
+            padding-top: 5px;
+        }
         .labels {
             position: absolute;
-            top: 25px;
-            left: 140px;
+            top: 15px;
+            left: 20px;
+
+            @media (min-width: @container-sm) {
+                position: static;
+            }
         }
         .img-cont {
             display: flex;
             margin-right: 15px;
 
+            @media (min-width: @container-sm) {
+                position: absolute;
+                left: 0;
+                width: calc((160%) * 0.4 + 10px);
+                height: 100%;
+                bottom: 0;
+                transform: translateX(-100%);
+                flex-direction: column;
+            }
+            .img {
+                background: linear-gradient(180deg, rgba(6, 8, 9, 0) 75%, #000000 99.92%, #060809 99.93%, rgba(204, 204, 204, 0.686417) 99.94%, rgba(177, 177, 177, 0.729419) 99.95%, #060809 99.96%, rgba(0, 0, 0, 0.533801) 99.97%, #060809 99.98%);
+                height: 100%;
+                min-height: 0px;
+            }
             img {
                 max-width: 100px;
+                display: block;
+
+                @media (min-width: @container-sm) {
+                    max-width: 100%;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    position: relative;
+                    display: block;
+                    object-fit: cover;
+                }
+            }
+            .primary__buttons {
+                display: flex;
+                flex-direction: column;
+                padding: 10px 15px 5px;
+                background: @color__black;
+
+                a {
+                    margin-bottom: 10px;
+                }
             }
         }
-        > p {
+        p {
             margin: 0;
             font-weight: 700;
             font-size: 18px;
@@ -361,7 +390,13 @@ main {
     }
     &__footer {
         background-color: @color__light-gray;
+        min-height: 45px;
 
+        @media (min-width: @container-sm) {
+            .burger + .custom-html {
+                display: none;
+            }
+        }
         .custom-html {
             font-size: 14px;
             line-height: 21px;
@@ -374,7 +409,11 @@ main {
 
         > div {
             flex-basis: 50%;
+            padding-right: 15px;
 
+            @media (min-width: @container-sm) {
+                flex-basis: calc(100% / 3);
+            }
             span {
                 font-size: 14px;
             }
@@ -448,7 +487,7 @@ main {
             color: #9A9D9F;
         }
         .btn {
-            width: 100%;
+            min-width: fill-available;
         }
 
         // reviews here
@@ -502,7 +541,13 @@ main {
         }
     }
 }
-
+@media (min-width: @container-xl) {
+    aside {
+        max-width: 360px;
+        min-width: 360px;
+        margin-left: 30px;
+    }
+}
 
 
 @media (max-width: @container-sm) {
@@ -514,4 +559,10 @@ main {
     .md-none {
         display: none!important;
     }
+}
+
+.perfect-pixel__img {
+    margin: auto;
+    right: 0;
+    opacity: .8!important;
 }

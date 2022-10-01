@@ -1,0 +1,54 @@
+.tags {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    min-height: 45px;
+    background-color: @color__very-light-gray;
+    padding: 2px;
+
+    a, button, span {
+        position: relative;
+        font-family: 'PF DinDisplay Pro';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        padding: 0 20px;
+        box-shadow: 0 0 0 1px @border__gray-color;
+        border: 0;
+        text-decoration: none;
+        color: @color__black;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 0;
+        background-color: @button__color-gray;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &.disable {
+            background-color: #ECEDED;
+            color: #C7C8C9;
+            cursor: default;
+        }
+        &.active:not(.disable), &:hover:not(.disable) {
+            background-color: #E0EAF3;
+            box-shadow: 0 0 0 1px @color__blue;
+            z-index: 1;
+        }
+        &.active:not(.disable) {
+            cursor: default;
+        }
+        &:hover:not(.disable) {
+            z-index: 2;
+        }
+        img:first-child {
+            padding-right: 8px;
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}

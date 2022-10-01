@@ -5,3 +5,15 @@
         color: @c;
     }
 }
+.font (@ff, @file, @fw, @s) {
+    @font-face {
+        font-family: @ff;
+        src: url('../fonts/@{file}.eot');
+        src: local('@{file}'),
+        url('../fonts/@{file}.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/@{file}.woff') format('woff'),
+        url('../fonts/@{file}.ttf') format('truetype');
+        font-weight: @fw;
+        font-style: @s;
+    }
+}
