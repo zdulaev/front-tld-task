@@ -21,6 +21,9 @@ a {
     ol, ul {
         padding-left: 1em;
     }
+    > * {
+        margin-bottom: 0;
+    }
 }
 .uppercase {
     text-transform: uppercase;
@@ -172,7 +175,7 @@ a {
                 color: @color__green;
             }
         }
-        @media (min-width: @container-lg) {
+        @media (min-width: @container-xl) {
             padding: 0;
             margin-right: 30px;
         }
@@ -194,7 +197,7 @@ a {
                 width: 100%;
                 flex-direction: column;
             }
-            @media (min-width: @container-lg) {
+            @media (min-width: @container-xl) {
                 flex-direction: row;
             }
         }
@@ -213,7 +216,8 @@ a {
                 display: flex;
                 align-items: center;
                 height: 100%;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                overflow: hidden;
             }
         }
     }
@@ -276,7 +280,7 @@ main {
 
         @media (min-width: @container-sm) {
             position: relative;
-            width: 60%;
+            width: calc(~'100% - 230px');
             margin-left: auto;
         }
     }
@@ -294,6 +298,7 @@ main {
     }
     &__center {
         border-bottom: 1px solid @color__gray;
+        padding-right: 0;
 
         .primary__buttons {
             display: flex;
@@ -301,9 +306,9 @@ main {
             .btn {
                 margin-right: 15px;
 
-                &:last-child {
-                    margin-right: 0;
-                }
+                // &:last-child {
+                //     margin-right: 0;
+                // }
                 &-primary {
                     order: -1;
                 }
@@ -314,6 +319,8 @@ main {
         .btn {
             max-width: none;
             width: 100%;
+            line-height: 13px;
+            text-align: center;
         }
     }
     &__logo {
@@ -340,7 +347,7 @@ main {
             @media (min-width: @container-sm) {
                 position: absolute;
                 left: 0;
-                width: calc((160%) * 0.4 + 10px);
+                width: 230px;
                 height: 100%;
                 bottom: 0;
                 transform: translateX(-100%);
@@ -391,6 +398,9 @@ main {
     &__footer {
         background-color: @color__light-gray;
         min-height: 45px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 15px;
 
         @media (min-width: @container-sm) {
             .burger + .custom-html {
@@ -406,10 +416,13 @@ main {
     &__advantages {
         display: flex;
         flex-wrap: wrap;
+        padding-bottom: 5px;
 
         > div {
             flex-basis: 50%;
             padding-right: 15px;
+            padding-bottom: 10px;
+            line-height: 25px;
 
             @media (min-width: @container-sm) {
                 flex-basis: calc(100% / 3);
@@ -420,6 +433,7 @@ main {
             p {
                 font-weight: 700;
                 font-size: 18px;
+                margin: 0;
             }
         }
     }
@@ -427,7 +441,7 @@ main {
 .secondary {
     position: relative;
     border-top: 1px solid @color__ink;
-    margin-top: 35px;
+    margin-top: 65px;
     padding-bottom: 20px;
     background: @color__light-gray;
 
@@ -451,15 +465,13 @@ main {
     article {
         position: relative;
         display: flex;
-        padding: 10px;
-        margin: 10px;
-
+        margin: 20px 20px 15px;
     }
 
     &__rating {
         position: absolute;
-        right: 10px;
-        top: 10px;
+        right: 0;
+        top: 0;
         background: @color__yellow;
         border-radius: @button__border-radius;
         display: flex;
@@ -470,6 +482,14 @@ main {
         font-weight: 700;
         font-size: 18px;
         color: @color__white;
+        padding-right: 5px;
+        padding-top: 3px;
+
+        // rating here
+        .secondary__review & {
+            top: 15px;
+            right: 10px;
+        }
     }
     &__content {
         width: 100%;
@@ -478,21 +498,23 @@ main {
         h3, h4, h5, h6 {
             font-size: 18px;
             margin-top: 0;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
         p {
             margin-top: 0;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             font-size: 15px;
             color: #9A9D9F;
         }
         .btn {
             min-width: fill-available;
+            height: 30px;
         }
 
         // reviews here
         .secondary__review & {
             padding-left: 0;
+            padding-bottom: 15px;
         }
     }
     &__review {
@@ -511,11 +533,19 @@ main {
             color: @color__black;
             display: inline;
         }
+        article& {
+            margin: 10px;
+            padding: 20px 10px;
+        }
+        + .secondary__view-all {
+            padding-top: 0;
+        }
     }
     &__logo {
 
         > img {
             max-width: 100px;
+            display: block;
         }
     }
     &__footer {
@@ -539,6 +569,16 @@ main {
             justify-content: center;
             align-items: center;
         }
+    }
+}
+.author, .date {
+    font-size: 14px;
+    color: #999;
+    display: flex;
+    align-items: flex-start;
+
+    span {
+        padding-left: 5px;
     }
 }
 @media (min-width: @container-xl) {
