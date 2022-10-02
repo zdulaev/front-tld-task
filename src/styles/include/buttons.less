@@ -1,24 +1,24 @@
 .btn {
     display: inline-flex;
     align-items: center;
-    padding-left: @button__padding-y;
-    padding-right: @button__padding-y;
+    padding-left: 12px;
+    padding-right: 12px;
     height: 35px;
     justify-content: center;
     max-width: max-content;
     font-family: 'PF DinDisplay Pro';
     text-decoration: none;
-    font-weight: @button__font-weight;
+    font-weight: 700;
     font-size: @button__font-size;
-    border: @button__border-line solid @color__transparent;
+    border: 1px solid @color__transparent;
     border-radius: @button__border-radius;
     cursor: pointer;
     vertical-align: middle;
 
     &-href {
         border: none;
-        background: transparent;
-        border-bottom: 1px dashed @href__decoration-color;
+        background: @color__transparent;
+        border-bottom: 1px dashed #2F8F41;
         border-radius: unset;
         font-weight: 400;
         color: @color__black;
@@ -27,17 +27,15 @@
         padding-left: 0;
         padding-right: 0;
         height: 20px;
-        // margin-left: @button__padding-y;
-        // margin-right: @button__padding-y;
     }
     &-danger {
-        .btn.type(@color__red, @color__red, @color__white);
+        .btn.type(@color__danger, @color__danger, @color__white);
     }
     &-success {
         .btn.type();
     }
     &-light {
-        .btn.type(@button__color-light-gray, @color__white, @color__black);
+        .btn.type(#9A9D9F, @color__white, @color__black);
 
         &-revert {
             .btn.type(@color__white, @color__transparent, @color__white);
@@ -46,7 +44,7 @@
         }
     }
     &-primary {
-        .btn.type(@color__white, @color__blue, @color__white);
+        .btn.type(@color__white, @color__primary, @color__white);
     }
     &-outline-light {
         .btn.type(@color__white, @color__transparent, @color__white);

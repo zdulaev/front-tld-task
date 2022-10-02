@@ -1,18 +1,18 @@
 .labels {
     display: flex;
     flex-wrap: wrap;
-    font-weight: @label__font-weight;
-    font-size: @label__font-size;
+    font-weight: 700;
+    font-size: 14px;
 
     span {
-        background-color: @color__blue;
-        color: #fff;
-        padding: @label__padding;
-        margin: @label__margin;
-        border-radius: @label__border-radius;
+        background-color: @color__primary;
+        color: @color__white;
+        padding: 4px 15px;
+        margin: 0px 5px 5px 0px;
+        border-radius: 3px;
 
         @media (min-width: @container-sm) {
-            background-color: @color__green;
+            background-color: @color__success;
         }
         &:last-child {
             margin-right: 0;

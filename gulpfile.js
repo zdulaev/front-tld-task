@@ -50,9 +50,9 @@ function clean() {
 // Обработка html и pug
 function html() {
     return gulp.src(paths.html.src)
-    .pipe(perfectPixel({}, {
-        rootPathImage: paths.perfectPixel.dest,
-    }))
+    // .pipe(perfectPixel({}, {
+    //     rootPathImage: paths.perfectPixel.dest,
+    // }))
     .pipe(size({
         showFiles:true
     }))
@@ -124,7 +124,7 @@ function watch() {
     gulp.watch(paths.scripts.src, scripts)
     gulp.watch(paths.fonts.src, fonts)
     gulp.watch(paths.images.src, img)
-    gulp.watch(paths.perfectPixel.src, pixel)
+    // gulp.watch(paths.perfectPixel.src, pixel)
 }
 
 // perfectPixel
@@ -142,7 +142,7 @@ exports.scripts = scripts
 exports.img = img
 exports.fonts = fonts
 exports.watch = watch
-exports.pixel = pixel
+// exports.pixel = pixel
 
 // Таск, который выполняется по команде gulp
-exports.default = gulp.series(clean, pixel, html, gulp.parallel(styles, scripts, img, fonts), watch)
+exports.default = gulp.series(clean, html, gulp.parallel(styles, scripts, img, fonts), watch)
